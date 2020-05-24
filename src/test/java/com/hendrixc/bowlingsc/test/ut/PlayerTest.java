@@ -11,9 +11,7 @@ import com.hendrixc.bowlingsc.BowlingRules;
 import com.hendrixc.bowlingsc.model.Frame;
 import com.hendrixc.bowlingsc.model.Player;
 import java.util.logging.Logger;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,15 +37,10 @@ public class PlayerTest {
     public static void tearDownClass() {
         LOG.info("Player TestCases finished");
     }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
+    /**
+     * Test a default creation for Player.
+     */
     @Test
     public void testPlayerDefaultCreation() {
         Player player = new Player();
@@ -57,6 +50,9 @@ public class PlayerTest {
         Assertions.assertTrue(player.getFrames().isEmpty());
     }
     
+    /**
+     * Test the player creation with a name passed as argument.
+     */
     @Test
     public void testPlayerWithNameCreation() {
         Player player = new Player("Henry");
@@ -66,6 +62,9 @@ public class PlayerTest {
         Assertions.assertTrue(player.getFrames().isEmpty());
     }
     
+    /**
+     * Test getlastFrame method.
+     */
     @Test
     public void testGetLastFrame() {
         Player player = new Player("Henry");

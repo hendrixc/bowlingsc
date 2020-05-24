@@ -3,18 +3,22 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.hendrixc</groupId>
     <artifactId>bowlingsc</artifactId>
-    <version>1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
+    <name>bowlingsc</name>
     <build>
+        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
                 <configuration>
                     <archive>
+                        
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.hendrixc.bowlingscore.Starter</mainClass>
+                            <mainClass>com.hendrixc.bowlingsc.Starter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

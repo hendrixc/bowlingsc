@@ -16,7 +16,7 @@ import org.junit.platform.suite.api.SelectPackages;
 import org.junit.runner.RunWith;
 
 /**
- *
+ * Test Suite for Bowling Score Calculator.
  * @author Henry Coral
  */
 @RunWith(JUnitPlatform.class)

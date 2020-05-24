@@ -30,15 +30,15 @@ public class Starter {
     
     private static final String USAGE = "\n" 
             + "Basic Usage:\n"
-            + "\tjava -jar bowling.jar \n"
+            + "\tjava -jar bowlingsc.jar \n"
             + "Providing a file name: \n"
-            + "\tjava -jar bowling.jar scoringFile.txt\n"
+            + "\tjava -jar bowlingsc.jar scoringFile.txt\n"
             + "Providing a file name and printing verbose validation: \n"
-            + "\tjava -jar bowling.jar -v scoringFile.txt\n";
+            + "\tjava -jar bowlingsc.jar -v scoringFile.txt\n";
     
     /**
-     * 
-     * @param args 
+     * The application's entry point 
+     * @param args an array of command-line arguments for the application
      */
     public static void main(String args[]) {
         Starter.printer(MAIN);
@@ -47,7 +47,7 @@ public class Starter {
     }
     
     public void process(String args[]) {
-        Object[] values = this.obtainValues(args);
+        Object[] values = this.obtainExecutionValues(args);
         ScoreParser parser = null;
         try {
             List<Player> players = parser.parseFile((String)values[0]);
@@ -61,14 +61,17 @@ public class Starter {
     }
     
     /**
-     * Request a file name with the scoring to be analized.
-     * @return Name of the file name with the individual scores.
+     * Gets the necessary values of the arguments for the program execution.
+     * @param args values passed in the command line.
+     * @return an object array of length 2. The first position (0) represents the file name that 
+     * contain the data to be processed,  the second position (1) contains a boolean value that 
+     * specify the type of file validation (verbose or not).
      */
-    private Object[] obtainValues(String args[]) {
+    private Object[] obtainExecutionValues(String args[]) {
         Object[] response = new Object[2]; 
         String fileName = null;
         Boolean verbose = Boolean.FALSE;
-        if (args == null) {
+        if (args.length==0) {
             Scanner scan = new Scanner(System.in);
             Starter.printer("Input the file name: ");
             fileName = scan.nextLine();
