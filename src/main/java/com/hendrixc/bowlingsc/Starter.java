@@ -20,7 +20,6 @@ import java.util.logging.Logger;
  * Main class for Bowling Score.
  * For detailed information please README.md file provided with distribution.
  * @author Henry Coral
- * @Version 1.0
  */
 public class Starter {
     
