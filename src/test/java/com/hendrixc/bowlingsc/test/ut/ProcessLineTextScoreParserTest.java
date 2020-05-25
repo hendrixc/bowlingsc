@@ -71,10 +71,12 @@ public class ProcessLineTextScoreParserTest {
                 "Colón1\t1",
                 "  Ángel  \t",
                 "O'Brian",
-                "François Hollande\t\t10",
                 "Müller\t ",
                 " \t1",
-                "1\t1"
+                "1\t1",
+                " \t ",
+                "A\tFF",
+                "A\tff"
         );
     }
     
@@ -88,7 +90,11 @@ public class ProcessLineTextScoreParserTest {
                 "O'Brian\tF",
                 "PETER\tF ",
                 "carl\t F",
-                "François Hollande\t10",
+                "PETER\tf ",
+                "carl\t f",
+                "PETER\t F ",
+                "carl\t f ",
+                "François Hollande\t\t10",
                 "Müller\t0 "
         );
     }
