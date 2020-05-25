@@ -7,11 +7,18 @@
 package com.hendrixc.bowlingsc;
 
 import com.hendrixc.bowlingsc.model.Player;
+import com.hendrixc.bowlingsc.service.calculator.ScoreCalculationException;
+import com.hendrixc.bowlingsc.service.calculator.ScoreCalculator;
+import com.hendrixc.bowlingsc.service.calculator.TenPinScoreCalculator;
+import com.hendrixc.bowlingsc.service.format.ConsoleScoreFormatter;
+import com.hendrixc.bowlingsc.service.format.ScoreFormatter;
+import com.hendrixc.bowlingsc.service.format.ScoreFormatterException;
 import com.hendrixc.bowlingsc.service.parser.ParserException;
 import com.hendrixc.bowlingsc.service.parser.ScoreParser;
 import com.hendrixc.bowlingsc.service.parser.TextScoreParser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -49,12 +56,17 @@ public class Starter {
     public void process(String args[]) {
         Object[] values = this.obtainExecutionValues(args);
         ScoreParser parser = new TextScoreParser();
+        ScoreCalculator calculator = new TenPinScoreCalculator();
+        ScoreFormatter formatter = new ConsoleScoreFormatter();
         try {
             List<Player> players = parser.parseFile((String)values[0]);
-            
-        } catch (ParserException ex) {
-            Logger.getLogger(Starter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+            List<Player> playersC = new ArrayList<>();
+            for (Player player : players) {
+                playersC.add(calculator.calculate(player));
+            }
+            String text = formatter.format(playersC);
+            Starter.printer(text);
+        } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
             Logger.getLogger(Starter.class.getName()).log(Level.SEVERE, null, ex);
         }
         
