@@ -24,8 +24,8 @@ public class DefaultFrameBuilder implements FrameBuilder{
             result = new Frame(DefaultFrameBuilder.FIRST_TURN);
             result.setFirstBall(pins);
         } else {
-            if (BowlingRules.MAX_FRAMES.value()<frame.getTurn()) {
-                if (BowlingRules.MAX_PINES.value()==frame.getFirstBall()) {
+            if (BowlingRules.MAX_FRAMES.value()>frame.getTurn()) {
+                if ((frame.getFirstBall()!=null && frame.getSecondBall()!=null) || frame.getFirstBall()==BowlingRules.MAX_PINES.value()) {
                     result = new Frame(frame.getTurn()+1);
                     result.setFirstBall(pins);
                 } else {
@@ -39,11 +39,11 @@ public class DefaultFrameBuilder implements FrameBuilder{
                 if (frame.getSecondBall()==null) {
                     frame.setSecondBall(pins);
                     result = frame;
-                } else if (BowlingRules.MAX_PINES.value()==frame.getFirstBall()) {
+                } else if (BowlingRules.MAX_PINES.value()<=(frame.getFirstBall()+frame.getSecondBall())) {
                     frame.setBonusBall(pins);
                     result = frame;
                 } else {
-                    throw new ParserException();
+                    throw new ParserException("Cannot assign ball value in Frame 10");
                 }
             }
             
