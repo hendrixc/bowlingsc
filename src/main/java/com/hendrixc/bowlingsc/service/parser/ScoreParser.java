@@ -49,5 +49,12 @@ public interface ScoreParser {
      */
     List<Player> parseContent(String content)  throws ParserException;
     
-    
+    /**
+     * Parse a text line to produce an object with two values (name and pines number).
+     * Each implementation could define its own format expected for 'text line'.
+     * @param line Text line to be parsed.
+     * @return object with name and pines number.
+     * @throws ParserException in case of the line not match with the content expected.
+     */
+    LineContent processLine(String line) throws ParserException;
 }
