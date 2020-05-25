@@ -39,14 +39,13 @@ public class DefaultFrameBuilder implements FrameBuilder{
                 if (frame.getSecondBall()==null) {
                     frame.setSecondBall(pins);
                     result = frame;
-                } else if (BowlingRules.MAX_PINES.value()<=(frame.getFirstBall()+frame.getSecondBall())) {
+                } else if (frame.getBonusBall()==null && BowlingRules.MAX_PINES.value()<=(frame.getFirstBall()+frame.getSecondBall())) {
                     frame.setBonusBall(pins);
                     result = frame;
                 } else {
-                    throw new ParserException("Cannot assign ball value in Frame 10");
+                    throw new ParserException("Exceed maximun number of Frames.");
                 }
             }
-            
         } 
         return result;
     }

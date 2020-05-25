@@ -9,6 +9,7 @@ package com.hendrixc.bowlingsc;
 import com.hendrixc.bowlingsc.model.Player;
 import com.hendrixc.bowlingsc.service.parser.ParserException;
 import com.hendrixc.bowlingsc.service.parser.ScoreParser;
+import com.hendrixc.bowlingsc.service.parser.TextScoreParser;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,7 +48,7 @@ public class Starter {
     
     public void process(String args[]) {
         Object[] values = this.obtainExecutionValues(args);
-        ScoreParser parser = null;
+        ScoreParser parser = new TextScoreParser();
         try {
             List<Player> players = parser.parseFile((String)values[0]);
             

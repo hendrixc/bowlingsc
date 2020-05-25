@@ -8,6 +8,7 @@ package com.hendrixc.bowlingsc;
 
 /**
  * BowlingRules is an enum that define the values for some rules of Ten Pin Bowling game.
+ * 
  * @author Henry Coral
  */
 public enum BowlingRules {
@@ -27,7 +28,11 @@ public enum BowlingRules {
     /**
      * Maximun number of pines 10.
      */
-    MAX_PINES(10);
+    MAX_PINES(10),
+    /**
+     * Zero pines knocked down.
+     */
+    FAULT(0);
     
     /**
      * Internal variable to assign the value related to the enumeration element.
