@@ -10,6 +10,7 @@
         <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
             </plugin>
@@ -24,7 +25,6 @@
                 <version>3.1.2</version>
                 <configuration>
                     <archive>
-                        
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.hendrixc.bowlingsc.Starter</mainClass>
@@ -33,21 +33,28 @@
                 </configuration>
             </plugin>
             <plugin>
-                <inherited>true</inherited>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
             </plugin>
-        </plugins>
-    </build>
-    <reporting>
-        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
             </plugin>
         </plugins>
-    </reporting>
+    </build>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
