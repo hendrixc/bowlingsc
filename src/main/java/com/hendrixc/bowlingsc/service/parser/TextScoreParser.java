@@ -29,8 +29,12 @@ public class TextScoreParser implements ScoreParser {
     @Override
     public List<Player> parseFile(String fileName) throws ParserException, IOException {
         Path path = Paths.get(fileName);
-        String content = Files.readString(path);
-        return this.parseContent(content);
+        List<String> contents = Files.readAllLines(path);
+        StringBuilder sb = new StringBuilder();
+        contents.forEach((line) -> {
+            sb.append(line+"\n");
+        });
+        return this.parseContent(sb.toString());
     }
 
     @Override
