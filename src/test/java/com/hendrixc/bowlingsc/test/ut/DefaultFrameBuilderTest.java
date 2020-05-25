@@ -17,11 +17,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test Cases for Frame class.
+ * Test Cases for DefaultFrameBuilder class.
  *
  * @author Henry Coral
  */
-@DisplayName("Tests for Frame model class")
+@DisplayName("Tests for DefaultFrameBuilder class")
 public class DefaultFrameBuilderTest {
 
     private static final Logger LOG = Logger.getLogger(DefaultFrameBuilderTest.class.getName());
@@ -60,7 +60,26 @@ public class DefaultFrameBuilderTest {
                     ()->Assertions.assertNull(frame.getScore())
             );
         } catch (ParserException pe) {
-            LOG.info("Exception to execute testWithNullFrame::"+pe.getMessage());
+            LOG.info("Exception to execute testWithExistingFrameSecondThrow::"+pe.getMessage());
+        }
+    }
+    
+    @Test
+    @DisplayName("build a Frame considering first ball of frame argument is 10")
+    public void testWithFirstBallOfFrameEquals10() {
+        try {
+            Frame frameTest = new Frame(1);
+            frameTest.setFirstBall(10);
+            Frame frame = builder.build(frameTest, 0);
+            Assertions.assertAll("frame",
+                    ()->Assertions.assertEquals(Integer.valueOf(2), frame.getTurn()),
+                    ()->Assertions.assertEquals(Integer.valueOf(0), frame.getFirstBall()),
+                    ()->Assertions.assertNull(frame.getSecondBall()),
+                    ()->Assertions.assertNull(frame.getBonusBall()),
+                    ()->Assertions.assertNull(frame.getScore())
+            );
+        } catch (ParserException pe) {
+            LOG.info("Exception to execute testWithFirstBallOfFrameEquals10::"+pe.getMessage());
         }
     }
     
@@ -73,14 +92,31 @@ public class DefaultFrameBuilderTest {
             frameTest.setSecondBall(1);
             Frame frame = builder.build(frameTest, 0);
             Assertions.assertAll("frame",
-                    ()->Assertions.assertEquals(Integer.valueOf(1), frame.getTurn()),
+                    ()->Assertions.assertEquals(Integer.valueOf(2), frame.getTurn()),
                     ()->Assertions.assertEquals(Integer.valueOf(0), frame.getFirstBall()),
                     ()->Assertions.assertNull(frame.getSecondBall()),
                     ()->Assertions.assertNull(frame.getBonusBall()),
                     ()->Assertions.assertNull(frame.getScore())
             );
         } catch (ParserException pe) {
-            LOG.info("Exception to execute testWithNullFrame::"+pe.getMessage());
+            LOG.info("Exception to execute testWithExistingFrameAllThrows::"+pe.getMessage());
         }
+    }
+    
+    @Test
+    @DisplayName("ParserException test sumof two balls more than 10")
+    public void testSumOfThrowsGreaterThan10() {
+        Frame frameTest = new Frame(1);
+        frameTest.setFirstBall(8);
+        Assertions.assertThrows(ParserException.class, ()-> builder.build(frameTest, 5));
+    }
+    
+    @Test
+    @DisplayName("ParserException test try add bonus fall in frame 10")
+    public void testExceptionBonusBallFrame10() {
+        Frame frameTest = new Frame(10);
+        frameTest.setFirstBall(2);
+        frameTest.setSecondBall(3);
+        Assertions.assertThrows(ParserException.class, ()-> builder.build(frameTest, 5));
     }
 }
