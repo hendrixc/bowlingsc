@@ -34,6 +34,9 @@ public class TextScoreParser implements ScoreParser {
 
     @Override
     public List<Player> parseFile(String fileName) throws ParserException, IOException {
+        if (StringUtils.isBlank(fileName)) {
+            throw new ParserException("File name is invalid.");
+        }
         Path path = Paths.get(fileName);
         List<String> contents = Files.readAllLines(path);
         StringBuilder sb = new StringBuilder();
