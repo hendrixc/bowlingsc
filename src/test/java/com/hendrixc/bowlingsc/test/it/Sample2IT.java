@@ -57,10 +57,10 @@ public class Sample2IT {
             }
             String toPrint = formatter.format(scores);
             String expected = "" +
-                    "Frame    1       2       3       4       5       6       7       8       9       10\n" +
+                    "Frame		1		2		3		4		5		6		7		8		9		10\n" +
                     "Jeff\n" +
-                    "Pinfalls 9   /   9   /   9   /   9   /   9   /   9   /   9   /   9   /   9   /   9   1   0\n" +
-                    "Score    19      38      57      76      95      114     133     152     171     181\n";
+                    "Pinfalls	9	/	9	/	9	/	9	/	9	/	9	/	9	/	9	/	9	/	9	1	0\n" +
+                    "Score		19		38		57		76		95		114		133		152		171		181\n";
             Assertions.assertEquals(expected, toPrint);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
             Logger.getLogger(Sample2IT.class.getName()).log(Level.SEVERE, null, ex);

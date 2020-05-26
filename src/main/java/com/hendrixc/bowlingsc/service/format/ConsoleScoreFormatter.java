@@ -44,8 +44,8 @@ public class ConsoleScoreFormatter implements ScoreFormatter{
             throw new ScoreFormatterException("Player invalid.");
         }
         StringBuilder playerStr = new StringBuilder();
-        StringBuilder framesStr = new StringBuilder("Pinfalls ");
-        StringBuilder scoreStr =  new StringBuilder("Score    ");
+        StringBuilder framesStr = new StringBuilder("Pinfalls\t");
+        StringBuilder scoreStr =  new StringBuilder("Score\t\t");
         Map<String,String> values = new HashMap<>();
         for (Frame frame : player.getFrames()) {
             String[] valuesFrame = this.obtainValuesFromFrame(frame);
@@ -53,7 +53,7 @@ public class ConsoleScoreFormatter implements ScoreFormatter{
             values.put(ConsoleScoreFormatter.VAL2, valuesFrame[1]);
             values.put(ConsoleScoreFormatter.SCORE, valuesFrame[2]);
             framesStr.append(this.replaceText(values, FRAME_TEMPLATE));
-            scoreStr.append(this.replaceText(values, SCORE_TEMPLATE).substring(0, 8));
+            scoreStr.append(this.replaceText(values, SCORE_TEMPLATE));
         }
         if (player.getLastFrame().getBonusBall()!=null) {
             framesStr.append((player.getLastFrame().getBonusBall()==BowlingRules.MAX_FRAMES.value()) ? "X" : player.getLastFrame().getBonusBall());
@@ -92,16 +92,11 @@ public class ConsoleScoreFormatter implements ScoreFormatter{
         return sub.replace(template);
     }
     
-    private static final String HEADER_TEMPLATE = "Frame    1       2       3       4       5       6       7       8       9       10\n";
-    
-    private static final String PLAYER_TEMPLATE = "{NAME}\n" +
-            "Pinfalls	{VAL1}	{VAL2}	{VAL3}	{VAL4}	{VAL5}	{VAL6}	{VAL7}	{VAL8}	{VAL9}	{VAL10}	{VAL11}	{VAL12}	{VAL13}	{VAL14}	{VAL15}	{VAL16}	{VAL17}	{VAL18}	{VAL19}	{VAL20}	{VAL21}\n" +
-            "Score		{SCO1}		{SCO2}		{SCO3}		{SCO4}		{SCO5}		{SCO6}		{SCO7}		{SCO8}		{SCO9}		{SCO10}\n";
-    
+    private static final String HEADER_TEMPLATE = "Frame\t\t1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10\n";
+     
     private static final String TEMPLATE = "${NAME}\n" +
             "${FRAMES}\n" +
             "${SCORES}\n";
-    private static final String FRAME_HEADER_TEMPLATE = "\t${THROW}\t";
-    private static final String FRAME_TEMPLATE = "${VAL1}   ${VAL2}   ";
-    private static final String SCORE_TEMPLATE = "${SCO}       ";
+    private static final String FRAME_TEMPLATE = "${VAL1}\t${VAL2}\t";
+    private static final String SCORE_TEMPLATE = "${SCO}\t\t";
 }

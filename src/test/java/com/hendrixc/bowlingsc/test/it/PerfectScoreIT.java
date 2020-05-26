@@ -57,10 +57,10 @@ public class PerfectScoreIT {
             }
             String toPrint = formatter.format(scores);
             String expected = ""
-                    + "Frame    1       2       3       4       5       6       7       8       9       10\n"
-                    + "Jeff\n" 
-                    + "Pinfalls     X       X       X       X       X       X       X       X       X   X   X   X\n" 
-                    + "Score    30      60      90      120     150     180     210     240     270     300\n";
+                    + "Frame		1		2		3		4		5		6		7		8		9		10\n" +
+                    "Jeff\n" +
+                    "Pinfalls	 	X	 	X	 	X	 	X	 	X	 	X	 	X	 	X	 	X	X	X	X\n" +
+                    "Score		30		60		90		120		150		180		210		240		270		300\n";
             Assertions.assertEquals(expected, toPrint);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
             Logger.getLogger(PerfectScoreIT.class.getName()).log(Level.SEVERE, null, ex);

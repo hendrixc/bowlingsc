@@ -1,23 +1,24 @@
 # **Ten-pin Bowling Score Calculator**
 
-Welcome to an example of Ten-pin Bowling Score Calculator with Java, you can download the binary distribution from release section or if prefer you can download the source code to build the program.
-The Bowling Score Calculator program is distribute by a zip file "bowlingsc.zip".
+Welcome to an example of Ten-pin Bowling Score Calculator with Java, you can download the binary distribution from release section or download the source code to build the program. 
+
+The Bowling Score Calculator program is distribute in a zip file called "bowlingsc.zip".
 
 ## Running the Ten-pin Bowling Score Calculator program
 ### Pre-requisites to execute
 1. JRE 1.8 or higher.
 
 ### Execution
-To execute the program execute the command below:
+To execute the program use the following command:
 `$ java -jar bowlingsc-full.jar fileName`
 
-Where fileName is the name of the file with bowling data. For you convenience the distribution file includes 2 files for testing purpose.
+Where fileName is the file name with bowling data. For you convenience, the zip file includes two test files (sample1.txt & sample2.txt).
 
 ### Distribution Contents
-1. bowlingsc-jar-with-dependencies.jar executable jar file.
-2. sample1.txt & sample2.txt files for tests.
-3. Folder "docs" includes javadoc documentation.
-4. Folder "site" includes maven site information.
+1. bowlingsc-full.jar, executable jar file.
+2. sample1.txt & sample2.txt, which are test files.
+3. "docs" folder, includes javadoc documentation.
+4. "site" folder, includes maven site information.
 
 ## Build
 
@@ -25,7 +26,7 @@ Where fileName is the name of the file with bowling data. For you convenience th
 1 JDK 1.8 or higher.
 2 Maven 3.3.9 or higher.
 
-To build the project, please follow the steps below
+In order to build the project, execute the following steps:
 
 ### Clone project
 `$ git clone https://github.com/hendrixc/bowlingsc.git`
@@ -61,7 +62,7 @@ To build the project, please follow the steps below
     - [X] The sum of first and second throws exceed the max pines number.
 - [x] The program should output the scoring for the associated game
     -  [X] For each player, print their name on a separate line before printing that player'spinfalls and score.
-    -  [ ] All values are tab-separated
+    -  [X] All values are tab-separated
     -  [X] The output should calculate if a player scores a strike ('X'), a spare ('/') and allow for extra chances in the tenth frame
 - [x] Unit test: Tests should cover at least the non-trivial classes and methods
 - [x] Integration test: At least cover the three main cases: Sample input (2 players), perfect score, zero score

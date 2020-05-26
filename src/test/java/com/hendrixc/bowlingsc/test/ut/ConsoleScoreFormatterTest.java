@@ -42,8 +42,8 @@ public class ConsoleScoreFormatterTest {
     public void testFormatTerribleScore() {
         try {
             String expected = "Jeff\n" +
-                    "Pinfalls 0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0\n" +
-                    "Score    0       0       0       0       0       0       0       0       0       0\n";
+                    "Pinfalls\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\t0\n" +
+                    "Score\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\t\t0\n";
             String text = formatter.format(this.dataFactoryTerribleScore());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
@@ -56,8 +56,8 @@ public class ConsoleScoreFormatterTest {
     public void testFormatPerfectScore() {
         try {
             String expected = "Jeff\n" +
-                    "Pinfalls     X       X       X       X       X       X       X       X       X   X   X   X\n" +
-                    "Score    30      60      90      120     150     180     210     240     270     300\n";
+                                "Pinfalls	 	X	 	X	 	X	 	X	 	X	 	X	 	X	 	X	 	X	X	X	X\n" +
+                                "Score		30		60		90		120		150		180		210		240		270		300\n";
             String text = formatter.format(this.dataFactoryPerfectScore());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
@@ -70,8 +70,8 @@ public class ConsoleScoreFormatterTest {
     public void testDataSet1FormatScore() {
         try {
             String expected = "Jeff\n" +
-                    "Pinfalls     X   7   /   9   9       X   0   0   8   /   0   0       X       X   X   8   1\n" +
-                    "Score    20      39      48      66      74      84      90      120     148     167\n";
+                              "Pinfalls	 	X	7	/	9	9	 	X	0	0	8	/	0	0	 	X	 	X	X	8	1\n" +
+                              "Score		20		39		48		66		74		84		90		120		148		167\n";
             String text = formatter.format(this.dataFactoryDataSet1());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
