@@ -23,8 +23,8 @@ Where fileName is the file name with bowling data. For you convenience, the zip 
 ## Build
 
 ### Pre-requisites
-1 JDK 1.8 or higher.
-2 Maven 3.3.9 or higher.
+1. JDK 1.8 or higher.
+2. Maven 3.3.9 or higher.
 
 In order to build the project, execute the following steps:
 
@@ -33,6 +33,7 @@ In order to build the project, execute the following steps:
 
 ### Build the project
 `$ cd bowlingsc`
+
 `$ mvn install`
 
 ### Generate a jar file with dependencies
