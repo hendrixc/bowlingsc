@@ -7,7 +7,7 @@ The Bowling Score Calculator program is distribute in a zip file called "bowling
 ## Running the Ten-pin Bowling Score Calculator program
 ### Pre-requisites to execute
 1. JRE 1.8 or higher.
-
+  
 ### Execution
 To execute the program use the following command:
 `$ java -jar bowlingsc-full.jar fileName`
