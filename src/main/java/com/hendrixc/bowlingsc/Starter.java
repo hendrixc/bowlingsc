@@ -30,6 +30,8 @@ import java.util.logging.Logger;
  * @author Henry Coral
  */
 public class Starter {
+
+    private static final Logger LOG = Logger.getLogger(Starter.class.getName());
     
     private static final String MAIN = "\n" 
             + "Bowling Scoring\n"
@@ -37,11 +39,9 @@ public class Starter {
     
     private static final String USAGE = "\n" 
             + "Basic Usage:\n"
-            + "\tjava -jar bowlingsc.jar \n"
+            + "\tjava -jar bowlingsc-full.jar \n"
             + "Providing a file name: \n"
-            + "\tjava -jar bowlingsc.jar scoringFile.txt\n"
-            + "Providing a file name and printing verbose validation: \n"
-            + "\tjava -jar bowlingsc.jar -v scoringFile.txt\n";
+            + "\tjava -jar bowlingsc.jar scoringFile.txt\n";
     
     /**
      * The application's entry point 
@@ -54,12 +54,12 @@ public class Starter {
     }
     
     public void process(String args[]) {
-        Object[] values = this.obtainExecutionValues(args);
+        String fileName = this.obtainExecutionValues(args);
         ScoreParser parser = new TextScoreParser();
         ScoreCalculator calculator = new TenPinScoreCalculator();
         ScoreFormatter formatter = new ConsoleScoreFormatter();
         try {
-            List<Player> players = parser.parseFile((String)values[0]);
+            List<Player> players = parser.parseFile(fileName);
             List<Player> playersC = new ArrayList<>();
             for (Player player : players) {
                 playersC.add(calculator.calculate(player));
@@ -67,7 +67,7 @@ public class Starter {
             String text = formatter.format(playersC);
             Starter.printer(text);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
-            Logger.getLogger(Starter.class.getName()).log(Level.SEVERE, null, ex);
+           LOG.log(Level.SEVERE, "An exception has ocurred:" + ex.getMessage());
         }
         
     }
@@ -75,32 +75,24 @@ public class Starter {
     /**
      * Gets the necessary values of the arguments for the program execution.
      * @param args values passed in the command line.
-     * @return an object array of length 2. The first position (0) represents the file name that 
-     * contain the data to be processed,  the second position (1) contains a boolean value that 
-     * specify the type of file validation (verbose or not).
+     * @return the file name.
      */
-    private Object[] obtainExecutionValues(String args[]) {
-        Object[] response = new Object[2]; 
-        String fileName = null;
-        Boolean verbose = Boolean.FALSE;
-        if (args.length==0) {
-            Scanner scan = new Scanner(System.in);
-            Starter.printer("Input the file name: ");
-            fileName = scan.nextLine();
-            Starter.printer("Verbose Validation [y]: ");
-            verbose = ("Y".equalsIgnoreCase(scan.nextLine()));
-        } else if (args.length==1){
-           fileName = args[0]; 
-        } else if (args.length == 2 && "-v".equalsIgnoreCase(args[0])){
-            fileName = args[1];
-            verbose = Boolean.TRUE;
-        } else {
-            Starter.printer(USAGE);
-            System.exit(-1);
+    private String obtainExecutionValues(String args[]) {
+        String fileName=null;
+        switch (args.length) {
+            case 0:
+                Scanner scan = new Scanner(System.in);
+                Starter.printer("Input the file name: ");
+                fileName = scan.nextLine();
+                break;
+            case 1:
+                fileName = args[0];
+                break;
+            default:
+                Starter.printer(USAGE);
+                System.exit(-1);
         }
-        response[0] = fileName;
-        response[1] = verbose;
-        return response;
+        return fileName;
     }
     
     /**

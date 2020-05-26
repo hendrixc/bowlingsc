@@ -9,7 +9,7 @@ The Bowling Score Calculator program is distribute by a zip file "bowlingsc.zip"
 
 ### Execution
 To execute the program execute the command below:
-`$ java -jar bowlingsc-jar-with-dependencies.jar fileName`
+`$ java -jar bowlingsc-full.jar fileName`
 
 Where fileName is the name of the file with bowling data. For you convenience the distribution file includes 2 files for testing purpose.
 
@@ -23,7 +23,7 @@ Where fileName is the name of the file with bowling data. For you convenience th
 
 ### Pre-requisites
 1 JDK 1.8 or higher.
-2 Maven 3.3 or higher.
+2 Maven 3.3.9 or higher.
 
 To build the project, please follow the steps below
 
@@ -31,6 +31,7 @@ To build the project, please follow the steps below
 `$ git clone https://github.com/hendrixc/bowlingsc.git`
 
 ### Build the project
+`$ cd bowlingsc`
 `$ mvn install`
 
 ### Generate a jar file with dependencies
@@ -54,9 +55,10 @@ To build the project, please follow the steps below
     -  [X] The rows are tab-separated
 - [x] The program should handle bad input
     - [X] Negative numbers
-    -  [X] More than 10 pins knocked down
-    -  [X] Inssuficient number of frames for each player.
-    -  [X] More than 10 frames by player.
+    - [X] More than 10 pins knocked down
+    - [X] Inssuficient number of frames for each player.
+    - [X] More than 10 frames by player.
+    - [X] The sum of first and second throws exceed the max pines number.
 - [x] The program should output the scoring for the associated game
     -  [X] For each player, print their name on a separate line before printing that player'spinfalls and score.
     -  [ ] All values are tab-separated
