@@ -33,6 +33,8 @@ import org.junit.jupiter.api.Test;
  * @author Henry Coral
  */
 public class TerribleScoreIT {
+
+    private static final Logger LOG = Logger.getLogger(TerribleScoreIT.class.getName());
     
     private final ScoreParser parser = new TextScoreParser();
     private final ScoreCalculator calculator = new TenPinScoreCalculator();
@@ -63,7 +65,7 @@ public class TerribleScoreIT {
                     "Score		0		0		0		0		0		0		0		0		0		0\n";
             Assertions.assertEquals(expected, toPrint);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
-            Logger.getLogger(TerribleScoreIT.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testScore", ex);
         }
     }
     

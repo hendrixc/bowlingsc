@@ -53,6 +53,10 @@ public class Starter {
         starter.process(args);
     }
     
+    /**
+     * Execute the program according the parameters received.
+     * @param args command line parameters.
+     */
     public void process(String args[]) {
         String fileName = this.obtainExecutionValues(args);
         ScoreParser parser = new TextScoreParser();
@@ -67,7 +71,8 @@ public class Starter {
             String text = formatter.format(playersC);
             Starter.printer(text);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
-           LOG.log(Level.SEVERE, "An exception has ocurred:" + ex.getMessage());
+           LOG.log(Level.SEVERE, "An exception has ocurred:" + ex.getMessage(), ex);
+           System.exit(-1);
         }
         
     }

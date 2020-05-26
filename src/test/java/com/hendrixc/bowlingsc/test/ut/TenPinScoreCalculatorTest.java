@@ -26,6 +26,8 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Tests for TenPinScoreCalculator class")
 public class TenPinScoreCalculatorTest {
 
+    private static final Logger LOG = Logger.getLogger(TenPinScoreCalculatorTest.class.getName());
+
     private final ScoreCalculator scoreCalculator = new TenPinScoreCalculator();
     
     @Test
@@ -61,7 +63,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(300), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testOptimalScore", ex);
         }
     }
 
@@ -85,7 +87,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(0), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testTerribleScore", ex);
         }
     }
     
@@ -109,7 +111,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(167), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testScoreDataSet1", ex);
         }
     }
     
@@ -133,7 +135,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(151), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+           LOG.log(Level.SEVERE, "Exception in testScoreDataSet2", ex);
         }
     }
     
@@ -157,7 +159,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(170), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testScoreDataSet3", ex);
         }
     }
     
@@ -181,7 +183,7 @@ public class TenPinScoreCalculatorTest {
                     () -> Assertions.assertEquals(Integer.valueOf(181), player.getFrames().get(9).getScore())
             );
         } catch (ScoreCalculationException ex) {
-            Logger.getLogger(TenPinScoreCalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testScoreDataSet4", ex);
         }
     }
 

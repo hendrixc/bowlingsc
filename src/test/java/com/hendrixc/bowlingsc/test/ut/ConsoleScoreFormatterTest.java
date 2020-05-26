@@ -27,6 +27,8 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
  */
 @DisplayName("Tests for ConsoleScoreFormatter class")
 public class ConsoleScoreFormatterTest {
+
+    private static final Logger LOG = Logger.getLogger(ConsoleScoreFormatterTest.class.getName());
     
     private final ScoreFormatter formatter = new ConsoleScoreFormatter();
     
@@ -47,7 +49,7 @@ public class ConsoleScoreFormatterTest {
             String text = formatter.format(this.dataFactoryTerribleScore());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
-            Logger.getLogger(ConsoleScoreFormatterTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testFormatTerribleScore", ex);
         }
     }
     
@@ -61,7 +63,7 @@ public class ConsoleScoreFormatterTest {
             String text = formatter.format(this.dataFactoryPerfectScore());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
-            Logger.getLogger(ConsoleScoreFormatterTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testFormatPerfectScore", ex);
         }
     }
     
@@ -75,7 +77,7 @@ public class ConsoleScoreFormatterTest {
             String text = formatter.format(this.dataFactoryDataSet1());
             Assertions.assertEquals(expected, text);
         } catch (ScoreFormatterException ex) {
-            Logger.getLogger(ConsoleScoreFormatterTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testDataSet1FormatScore", ex);
         }
     }
     

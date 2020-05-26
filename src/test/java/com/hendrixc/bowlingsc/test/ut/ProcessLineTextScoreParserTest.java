@@ -28,6 +28,8 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
  */
 @DisplayName("Tests for procesLine method of TextScoreParser class")
 public class ProcessLineTextScoreParserTest {
+
+    private static final Logger LOG = Logger.getLogger(ProcessLineTextScoreParserTest.class.getName());
     
     private final ScoreParser parser = new TextScoreParser();
     
@@ -44,7 +46,7 @@ public class ProcessLineTextScoreParserTest {
             Assertions.assertEquals("Jeff", lineContent.getName());
             Assertions.assertEquals(Integer.valueOf(0), lineContent.getPines());
         } catch (ParserException ex) {
-            Logger.getLogger(ProcessLineTextScoreParserTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, "Exception in testLineContent", ex);
         }
     }
     
