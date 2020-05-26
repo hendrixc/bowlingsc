@@ -42,7 +42,7 @@ public class ConsoleScoreFormatterTest {
     public void testFormatTerribleScore() {
         try {
             String expected = "Jeff\n" +
-                    "Pinfalls 0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   \n" +
+                    "Pinfalls 0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0\n" +
                     "Score    0       0       0       0       0       0       0       0       0       0\n";
             String text = formatter.format(this.dataFactoryTerribleScore());
             Assertions.assertEquals(expected, text);

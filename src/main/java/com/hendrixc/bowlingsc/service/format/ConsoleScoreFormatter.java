@@ -60,7 +60,7 @@ public class ConsoleScoreFormatter implements ScoreFormatter{
         }
         playerStr.append(player.getName());
         playerStr.append("\n");
-        playerStr.append(framesStr);
+        playerStr.append(StringUtils.trim(framesStr.toString()));
         playerStr.append("\n");
         playerStr.append(StringUtils.trim(scoreStr.toString()));
         playerStr.append("\n");

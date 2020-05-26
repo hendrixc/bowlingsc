@@ -28,11 +28,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
- * Integration Test Case for perfect Score.
+ * Integration Test Case for sample3 file.
  *
  * @author Henry Coral
  */
-public class PerfectIT {
+public class Sample3IT {
     
     private final ScoreParser parser = new TextScoreParser();
     private final ScoreCalculator calculator = new TenPinScoreCalculator();
@@ -47,23 +47,23 @@ public class PerfectIT {
     }
     
     @Test
-    public void testPerfectScore() {
+    public void testScore() {
         try {
-            String fileName1 = resourcesDirectory+File.separator+"perfect.txt";
+            String fileName1 = resourcesDirectory+File.separator+"sample3.txt";
             List<Player> players  = parser.parseFile(fileName1);
             List<Player> scores = new ArrayList<>();
             for (Player player : players) {
                 scores.add(calculator.calculate(player));
             }
             String toPrint = formatter.format(scores);
-            String expected = ""
-                    + "Frame    1       2       3       4       5       6       7       8       9       10\n"
-                    + "Jeff\n" 
-                    + "Pinfalls     X       X       X       X       X       X       X       X       X   X   X   X\n" 
-                    + "Score    30      60      90      120     150     180     210     240     270     300\n";
+            String expected = "" +
+                    "Frame    1       2       3       4       5       6       7       8       9       10\n" +
+                    "Jeff\n" +
+                    "Pinfalls 9   /   9   /   9   /   9   /   9   /   9   /   9   /   9   /       X   4   4\n" +
+                    "Score    19      38      57      76      95      114     133     153     171     179\n";
             Assertions.assertEquals(expected, toPrint);
         } catch (ParserException | IOException | ScoreCalculationException | ScoreFormatterException ex) {
-            Logger.getLogger(PerfectIT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Sample3IT.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
